@@ -62,3 +62,23 @@ end
 http://localhost:9090/
 curl localhost:9090
 ```
+## reading html files with erb
+don't forget to change 'Content-Type' => 'text/html'
+erb allows us to write ruby in html files
+
+```
+#views/index.erb
+<html>
+  <body>
+    <h2>Hello Pizza!</h2>
+    <% random = (0..9).to_a.sample %>
+    <%= random %>
+  </body>
+</html>
+```
+```
+when '/'
+  template = File.read("views/index.erb")
+  content = ERB.new(template)
+  ['200', {'Content-Type' => 'text/html'}, [content.result]]
+```
