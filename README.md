@@ -1,11 +1,11 @@
 # Rack basics
 
-## create a config file with the following configurations
+## create a config file with the following configurations, in this exampel the root file will be named app.rb
 ```
 # config.ru
-require_relative 'name_of_root_rb_file'
+require_relative 'app'
 
-run name_of_root_rb_file.new
+run App.new
 ```
 
 ## create a Gemfile to access rack gem
@@ -22,10 +22,11 @@ $bundle install
 
 ## create a root ruby file to serve pages
 ```
-class name_of_root_rb_file
+class App
   def call(env)
       ['200', {'Content-Type' => 'text/plain'}, ['Welcome to root the page']]
   end
+end
 ```
 ## run the server
 ```
@@ -38,7 +39,7 @@ env['REQUEST_PATH'] can be used to access the request path, which can be combine
 ```
 require_relative 'name_of_example'
 
-class name_of_root_rb_file
+class App
   def call(env)
     case env['REQUEST_PATH']
     when '/'
