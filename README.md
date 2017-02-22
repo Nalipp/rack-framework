@@ -37,7 +37,7 @@ $ bundle exec rackup config.ru -p 9595
 env['REQUEST_PATH'] can be used to access the request path, which can be combined with a case statement for basic routing, don't forget to require_relative to reference other ruby pages.
 
 ```
-require_relative 'name_of_example'
+require_relative 'name_of_example_file'
 
 class App
   def call(env)
@@ -45,7 +45,7 @@ class App
     when '/'
       ['200', {'Content-Type' => 'text/plain'}, ['Welcome to root the page']]
     when '/name_of_example'
-      variable = Name_of_example.new.method_return_value
+      variable = Name_of_example_class.new.method_return_value
       ['200', {'Content-Type' => 'text/plain'}, [variable]]
     else
       [
@@ -56,4 +56,9 @@ class App
     end
   end
 end
+```
+## run the app at localhost:9595 or curl
+```
+http://localhost:9090/
+curl localhost:9090
 ```
