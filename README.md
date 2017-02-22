@@ -37,6 +37,7 @@ $ bundle exec rackup config.ru -p 9595
 ## basic routing example
 ### env['REQUEST_PATH'] can be used to access the request path, which can be combined with a case statement, don't forget to require_relative to reference other ruby pages.
 
+```
 require_relative 'name_of_example'
 
 class name_of_root_rb_file
@@ -56,3 +57,4 @@ class name_of_root_rb_file
     end
   end
 end
+```
